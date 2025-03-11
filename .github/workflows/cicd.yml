@@ -1,0 +1,35 @@
+name: SQL Execution
+on:
+  push:
+    branches:
+      - feature/test
+  workflow_dispatch:
+    inputs:
+      db_env:
+          type: choice
+          description: Select Environment
+          required: true
+          options:
+          - development
+          - stage
+          - prod
+      script_name:
+          type: string
+          description: 'Enter Script Name:'
+          required: true
+
+env:
+  REGION: "us-east-1"
+  
+jobs:
+  execute_sql:
+    name: "Execute SQL"
+    runs-on: "ubuntu-latest"
+    # environment:
+    #   name: "dev"
+
+    steps:
+      - name: Hello
+        run: |
+          echo "Hello"
+
